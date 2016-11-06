@@ -41,7 +41,7 @@ public class TopNSolverTest {
 						+": Calculate size file");
 			}
 			numberByteCntMinus1 = numberByteCnt;
-			numberByteCnt += (int)(Math.log10(i) + 1)+ lineSepValue;
+			numberByteCnt += (long)(Math.log10(i) + 1)+ lineSepValue;
 		}
 		logger.info(numberByteCntMinus1+" <= "+numberByte+" <= "+numberByteCnt);
 		assertTrue("min "+numberByte, numberByte <= numberByteCnt);

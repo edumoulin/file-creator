@@ -47,7 +47,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>com.edumoulin.topn.TopNFileWriter</mainClass>
+							<mainClass>com.edumoulin.topn.TopNParser</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

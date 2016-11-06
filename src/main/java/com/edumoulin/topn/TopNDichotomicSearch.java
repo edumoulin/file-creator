@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 /**
- * Solve the problem by dichotomy
+ * Solve the problem by dichotomic search
  * @author etienne
  *
  */
@@ -15,6 +15,11 @@ public class TopNDichotomicSearch implements TopNSolver {
 	
 	protected static List<Long> sizeBase10 = new LinkedList<Long>();
 	
+	/**
+	 * count numbers with n digit 
+	 * @param index
+	 * @return
+	 */
 	protected long getNumberBase10(int index){
 		if(sizeBase10.size() <= index){
 			long max_ans_cur = ((long)Math.pow(10, index+1)) - (long)Math.pow(10, index);
@@ -26,8 +31,14 @@ public class TopNDichotomicSearch implements TopNSolver {
 		return sizeBase10.get(index);
 	}
 	
-	protected long eval(long number){
+	/**
+	 * Evaluate the file size with the number
+	 * @param number
+	 * @return The file size
+	 */
+	protected long evalFileSize(long number){
 		boolean end = false;
+		int lineSepLength = TopNFileWriter.lineSep.length();
 		long ans = 0;
 		long ans_size = 0;
 		int i = 1;
@@ -35,11 +46,11 @@ public class TopNDichotomicSearch implements TopNSolver {
 			long max_ans_cur = getNumberBase10(i-1);
 			long max_ans_size_cur = 
 					max_ans_cur
-							*(i+TopNFileWriter.lineSep.length());
+							*(i+lineSepLength);
 			if(ans +max_ans_cur >= number){
 				long ans_cur = number - ans;
 				ans+= ans_cur;
-				ans_size += ans_cur*(i+TopNFileWriter.lineSep.length());
+				ans_size += ans_cur*(i+lineSepLength);
 				if(logger.isTraceEnabled()){
 					logger.trace("Found result (number,size-1,cur_size, ans): "
 							+number+","+ans_size+", "+max_ans_size_cur+","+ans);
@@ -55,24 +66,24 @@ public class TopNDichotomicSearch implements TopNSolver {
 	}
 	
 	/**
-	 * Get the index that is greater than eval;
-	 * @param min
-	 * @param max
-	 * @param numberByte
-	 * @return
+	 * Get the number needed for creating a file of the given size
+	 * @param min The minimum number it could be
+	 * @param max The maximum number it could be
+	 * @param numberByte Size Requested
+	 * @return 
 	 */
 	public long search(long min, long max,long numberByte){
-		logger.trace("Dichotomy search (min,max,numbeByte): "+min+","+max+","+numberByte);
+		logger.debug("Dichotomic search (min,max,numbeByte): "+min+","+max+","+numberByte);
 		long mid = min + (max - min)/2;
-		long eval = eval(mid);
-		logger.trace("Eval mid "+mid+": "+eval);
+		long eval = evalFileSize(mid);
+		logger.debug("Eval mid "+mid+": "+eval);
 		if(eval < numberByte){
 			min = mid+1;
 		}else{
 			max = mid;
 		}
 		if(min == max){
-			logger.trace("Final result: "+min);
+			logger.debug("Final result: "+min);
 			return min;
 		}else{
 			return search(min,max,numberByte);

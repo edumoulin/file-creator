@@ -19,9 +19,9 @@ public class TopNDichotomicSearchTest {
 	@Test
 	public void evalFct(){
 		TopNDichotomicSearch dich = new TopNDichotomicSearch();
-		long eval = dich.eval(1);
+		long eval = dich.evalFileSize(1);
 		assertTrue("Eval 1: "+eval,eval == 2);
-		eval = dich.eval(2);
+		eval = dich.evalFileSize(2);
 		assertTrue("Eval 2: "+eval,eval == 4);
 	}
 	

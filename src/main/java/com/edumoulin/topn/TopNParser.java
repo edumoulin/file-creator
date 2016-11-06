@@ -140,8 +140,8 @@ public class TopNParser {
 	public static boolean checkSize(File f, long size) throws IOException{
 		if(f != null){
 			long freeSpace = f.getUsableSpace();
-			logger.debug(f.getPath()+": "+freeSpace);
-			//
+			logger.debug("Free disk space "+f.getPath()+": "+freeSpace);
+			//This method can fail silently
 			if(freeSpace != 0){
 				return freeSpace > size;
 			}
@@ -187,15 +187,18 @@ public class TopNParser {
 				printHelp(options);
 				ok = false;
 			}else{
-				if(checkSize(file,size)){
-					try{
-						file.getParentFile().mkdirs();
-					}catch(Exception e){
-					}
+				try{
+					file.getParentFile().mkdirs();
+				}catch(Exception e){
+				}
+				if(checkSize(file.getParentFile(),size)){
 					if(cmd.hasOption("lp")){
 						new TopNFileWriter().writeFile(file,size, new TopNLPEquation());
 					}else{
 						new TopNFileWriter().writeFile(file,size, new TopNDichotomicSearch());
+					}
+					if(file.exists()){
+						logger.info("SUCCESS");
 					}
 				}else{
 					logger.error(MessageManager.getProperty("diskcapacityexceeded"));

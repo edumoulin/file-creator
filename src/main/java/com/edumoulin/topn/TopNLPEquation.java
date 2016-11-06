@@ -78,8 +78,6 @@ public class TopNLPEquation implements TopNSolver{
 			solver.strAddConstraint(getZeroArrayExceptOne(i, nbVariable), 
 					LpSolve.LE, 
 					Math.pow(10, i+1) - Math.pow(10, i));
-			//We are looking for int, but the int value may overflow, so we keep it as double.
-			//solver.setInt(i+1, true);
 			
 			sizeEquation.append(i+1+lineSepSize);
 			objectiveEq.append(i+1);

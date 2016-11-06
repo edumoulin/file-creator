@@ -47,7 +47,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>com.edumoulin.file.TopNParser</mainClass>
+							<mainClass>com.edumoulin.file.FileCParser</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

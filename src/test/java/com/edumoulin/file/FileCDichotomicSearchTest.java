@@ -6,11 +6,11 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.edumoulin.file.TopNDichotomicSearch;
+import com.edumoulin.file.FileCDichotomicSearch;
 
-public class TopNDichotomicSearchTest {
+public class FileCDichotomicSearchTest {
 
-	private static Logger logger = Logger.getLogger(TopNDichotomicSearchTest.class);
+	private static Logger logger = Logger.getLogger(FileCDichotomicSearchTest.class);
 	
 	
 	@BeforeClass
@@ -20,7 +20,7 @@ public class TopNDichotomicSearchTest {
 	
 	@Test
 	public void evalFct(){
-		TopNDichotomicSearch dich = new TopNDichotomicSearch();
+		FileCDichotomicSearch dich = new FileCDichotomicSearch();
 		long eval = dich.evalFileSize(1);
 		assertTrue("Eval 1: "+eval,eval == 2);
 		eval = dich.evalFileSize(2);

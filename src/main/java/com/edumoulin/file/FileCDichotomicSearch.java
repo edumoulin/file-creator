@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
  * @author etienne
  *
  */
-public class TopNDichotomicSearch implements TopNSolver {
-	private static Logger logger = Logger.getLogger(TopNDichotomicSearch.class);
+public class FileCDichotomicSearch implements FileCSolver {
+	private static Logger logger = Logger.getLogger(FileCDichotomicSearch.class);
 	
 	protected static List<Long> sizeBase10 = new LinkedList<Long>();
 	
@@ -38,7 +38,7 @@ public class TopNDichotomicSearch implements TopNSolver {
 	 */
 	protected long evalFileSize(long number){
 		boolean end = false;
-		int lineSepLength = TopNFileWriter.lineSep.length();
+		int lineSepLength = FileCFileWriter.lineSep.length();
 		long ans = 0;
 		long ans_size = 0;
 		int i = 1;

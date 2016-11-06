@@ -11,9 +11,9 @@ import org.apache.log4j.Logger;
  * @author etienne
  *
  */
-public class TopNFileWriter {
+public class FileCFileWriter {
 
-	private static Logger logger = Logger.getLogger(TopNFileWriter.class);
+	private static Logger logger = Logger.getLogger(FileCFileWriter.class);
 	/**
 	 * OS specific line separator.
 	 */
@@ -25,7 +25,7 @@ public class TopNFileWriter {
 	 * @param sizeFile The size of the file
 	 * @throws Exception
 	 */
-	public void writeFile(File file,long sizeFile,TopNSolver solver) throws Exception{
+	public void writeFile(File file,long sizeFile,FileCSolver solver) throws Exception{
 		//Get the number to start with
 		long maxNumber = solver.getMaxNumber(sizeFile);
 		FileWriter fw = new FileWriter(file);

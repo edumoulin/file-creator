@@ -20,9 +20,9 @@ import org.apache.log4j.Logger;
  *
  * The method contains the main class.
  */
-public class TopNParser {
+public class FileCParser {
 
-	private static Logger logger = Logger.getLogger(TopNParser.class);
+	private static Logger logger = Logger.getLogger(FileCParser.class);
 
 	/**
 	 * Create the command line options.
@@ -193,9 +193,9 @@ public class TopNParser {
 				}
 				if(checkSize(file.getParentFile(),size)){
 					if(cmd.hasOption("lp")){
-						new TopNFileWriter().writeFile(file,size, new TopNLPEquation());
+						new FileCFileWriter().writeFile(file,size, new FileCLPEquation());
 					}else{
-						new TopNFileWriter().writeFile(file,size, new TopNDichotomicSearch());
+						new FileCFileWriter().writeFile(file,size, new FileCDichotomicSearch());
 					}
 					if(file.exists()){
 						logger.info("SUCCESS");

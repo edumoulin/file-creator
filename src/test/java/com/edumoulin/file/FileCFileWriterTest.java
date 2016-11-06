@@ -8,18 +8,18 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.edumoulin.file.TopNDichotomicSearch;
-import com.edumoulin.file.TopNFileWriter;
-import com.edumoulin.file.TopNLPEquation;
+import com.edumoulin.file.FileCDichotomicSearch;
+import com.edumoulin.file.FileCFileWriter;
+import com.edumoulin.file.FileCLPEquation;
 
 /**
  * Unit Test for writting a file.
  * @author etienne
  *
  */
-public class TopNFileWriterTest {
+public class FileCFileWriterTest {
 
-	private static Logger logger = Logger.getLogger(TopNFileWriterTest.class);
+	private static Logger logger = Logger.getLogger(FileCFileWriterTest.class);
 	
 
 	@BeforeClass
@@ -35,11 +35,11 @@ public class TopNFileWriterTest {
 		File f = new File("test.txt");
 		f.delete();
 		try{
-			new TopNFileWriter().writeFile(f,0,new TopNDichotomicSearch());
+			new FileCFileWriter().writeFile(f,0,new FileCDichotomicSearch());
 			assertTrue("empty file should exist",f.exists());
 			
 			f.delete();
-			new TopNFileWriter().writeFile(f,10,new TopNLPEquation());
+			new FileCFileWriter().writeFile(f,10,new FileCLPEquation());
 			assertTrue("small file should exist",f.exists());
 			f.delete();
 		}catch(Exception e){

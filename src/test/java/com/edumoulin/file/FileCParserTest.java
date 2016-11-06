@@ -15,20 +15,20 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.edumoulin.file.TopNFileWriter;
-import com.edumoulin.file.TopNParser;
+import com.edumoulin.file.FileCFileWriter;
+import com.edumoulin.file.FileCParser;
 
 /**
  * Unit test for parsing.
  * @author etienne
  *
  */
-public class TopNParserTest {
+public class FileCParserTest {
 	
-	private static Logger logger = Logger.getLogger(TopNParserTest.class);
+	private static Logger logger = Logger.getLogger(FileCParserTest.class);
 	
 	protected CommandLineParser parser = new DefaultParser();
-	protected Options options = TopNParser.createOptions();
+	protected Options options = FileCParser.createOptions();
 
 
 	@BeforeClass
@@ -53,10 +53,10 @@ public class TopNParserTest {
 		if(cmd != null){
 			if(notNull){
 				assertTrue("Test correct file arguments: "+Arrays.toString(args),
-						TopNParser.getFileArgument(cmd) != null);
+						FileCParser.getFileArgument(cmd) != null);
 			}else{
 				assertTrue("Test incorrect file arguments: "+Arrays.toString(args),
-						TopNParser.getFileArgument(cmd) == null);
+						FileCParser.getFileArgument(cmd) == null);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ public class TopNParserTest {
 		try{
 			testFileArgument(new String[]{"-f","test.txt"},true);
 			testFileArgument(new String[]{"-f","/tmp/test.txt"},true);
-			testFileArgument(new String[]{"-f","target"+TopNFileWriter.lineSep+"test.txt"},true);
+			testFileArgument(new String[]{"-f","target"+FileCFileWriter.lineSep+"test.txt"},true);
 			testFileArgument(new String[]{"-f"},false);
 			testFileArgument(new String[]{},false);
 			//This check is not working on linux.
@@ -96,10 +96,10 @@ public class TopNParserTest {
 		}
 		if(notNull){
 			assertTrue("Test correct file arguments: "+Arrays.toString(args),
-					TopNParser.getSizeArgument(cmd) != null);
+					FileCParser.getSizeArgument(cmd) != null);
 		}else{
 			assertTrue("Test incorrect file arguments: "+Arrays.toString(args),
-					TopNParser.getSizeArgument(cmd) == null);
+					FileCParser.getSizeArgument(cmd) == null);
 		}
 	}
 
@@ -134,9 +134,9 @@ public class TopNParserTest {
 	public void testCheckSize(){
 		File f = new File("/tmp/test.txt");
 		try{
-			assertTrue("small file check disk", TopNParser.checkSize(f.getParentFile(),10));
-			assertFalse("big file check disk", TopNParser.checkSize(f.getParentFile(),(long)10e15));
-			assertFalse("big file check disk", TopNParser.checkSize(new File("test.txt").getAbsoluteFile().getParentFile(),(long)10e15));
+			assertTrue("small file check disk", FileCParser.checkSize(f.getParentFile(),10));
+			assertFalse("big file check disk", FileCParser.checkSize(f.getParentFile(),(long)10e15));
+			assertFalse("big file check disk", FileCParser.checkSize(new File("test.txt").getAbsoluteFile().getParentFile(),(long)10e15));
 		}catch(Exception e){
 			logger.error(e,e);
 			assertTrue("Unexpected error: "+e,false);
@@ -156,13 +156,13 @@ public class TopNParserTest {
 			File f = new File(cmd.getOptionValue("f"));
 			f.delete();
 			assertTrue("Full run correct, arguments: "+Arrays.toString(args),
-					TopNParser.parseAndRun(args));
+					FileCParser.parseAndRun(args));
 			assertTrue("Test file exist after run: "+Arrays.toString(args),
 					f.exists());
 			f.delete();
 		}else{
 			assertFalse("Full run incorrect, arguments: "+Arrays.toString(args),
-					TopNParser.parseAndRun(args));
+					FileCParser.parseAndRun(args));
 		}
 	}
 	

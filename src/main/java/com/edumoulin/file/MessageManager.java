@@ -20,7 +20,7 @@ public class MessageManager {
 		if(props == null){
 			try{
 				props = new Properties();
-				props.load(MessageManager.class.getResourceAsStream("/topn_lang.properties"));
+				props.load(MessageManager.class.getResourceAsStream("/file_creator_lang.properties"));
 			}catch(Exception e){
 				logger.warn("Unable to access properties",e);
 			}

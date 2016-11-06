@@ -8,21 +8,21 @@ import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.edumoulin.file.TopNDichotomicSearch;
-import com.edumoulin.file.TopNFileWriter;
-import com.edumoulin.file.TopNLPEquation;
-import com.edumoulin.file.TopNSolver;
+import com.edumoulin.file.FileCDichotomicSearch;
+import com.edumoulin.file.FileCFileWriter;
+import com.edumoulin.file.FileCLPEquation;
+import com.edumoulin.file.FileCSolver;
 
 /**
  * Unit test for solving the topN equation
  * @author etienne
  *
  */
-public class TopNSolverTest {
+public class FileCSolverTest {
 
-	private static Logger logger = Logger.getLogger(TopNSolverTest.class);
+	private static Logger logger = Logger.getLogger(FileCSolverTest.class);
 
-	private TopNSolver equation = null;
+	private FileCSolver equation = null;
 
 	@BeforeClass
 	public static void init(){
@@ -38,7 +38,7 @@ public class TopNSolverTest {
 		long numberByteCnt = 0;
 		long numberByteCntMinus1 = 0;
 		long result = equation.getMaxNumber(numberByte);
-		int lineSepValue = TopNFileWriter.lineSep.length();
+		int lineSepValue = FileCFileWriter.lineSep.length();
 		for(long i = 1; i <= result;++i){
 			if(i%10e7== 0){
 				logger.debug(NumberFormat.getInstance().format(i)
@@ -57,7 +57,7 @@ public class TopNSolverTest {
 	/**
 	 * Runs different problem size and check the result
 	 */
-	public void checkResult(TopNSolver solver){
+	public void checkResult(FileCSolver solver){
 		equation = solver;
 		try{
 			assertTrue("0 test",0 == equation.getMaxNumber(0));
@@ -81,11 +81,11 @@ public class TopNSolverTest {
 
 	@Test
 	public void checkLP(){
-		checkResult(new TopNLPEquation());
+		checkResult(new FileCLPEquation());
 	}
 	
 	@Test
 	public void checkDichotomy(){
-		checkResult(new TopNDichotomicSearch());
+		checkResult(new FileCDichotomicSearch());
 	}
 }

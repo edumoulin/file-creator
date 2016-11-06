@@ -5,7 +5,7 @@ package com.edumoulin.file;
  * @author etienne
  * 
  */
-public interface TopNSolver {
+public interface FileCSolver {
 	
 	/**
 	 * Get the answer of the problem.

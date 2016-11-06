@@ -16,8 +16,8 @@ import lpsolve.LpSolveException;
  * We use linear programming for solving the following problem.
  *
  */
-public class TopNLPEquation implements TopNSolver{
-	private static Logger logger = Logger.getLogger(TopNLPEquation.class);
+public class FileCLPEquation implements FileCSolver{
+	private static Logger logger = Logger.getLogger(FileCLPEquation.class);
 
 	/**
 	 * Create a string with zeros except one index
@@ -106,7 +106,7 @@ public class TopNLPEquation implements TopNSolver{
 	 */
 	public long getMaxNumber(long numberByte) throws LpSolveException{
 		logger.info("Size requested: "+numberByte);
-		LpSolve solver = new TopNLPEquation().getSolver(numberByte,TopNFileWriter.lineSep.length());
+		LpSolve solver = new FileCLPEquation().getSolver(numberByte,FileCFileWriter.lineSep.length());
 
 		// solve the problem
 		solver.solve();

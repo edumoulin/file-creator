@@ -1,4 +1,4 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,6 +7,10 @@ import java.io.File;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.edumoulin.file.TopNDichotomicSearch;
+import com.edumoulin.file.TopNFileWriter;
+import com.edumoulin.file.TopNLPEquation;
 
 /**
  * Unit Test for writting a file.

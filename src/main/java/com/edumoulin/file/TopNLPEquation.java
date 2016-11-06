@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import org.apache.log4j.Logger;
 

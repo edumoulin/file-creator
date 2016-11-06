@@ -1,10 +1,12 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.edumoulin.file.TopNDichotomicSearch;
 
 public class TopNDichotomicSearchTest {
 

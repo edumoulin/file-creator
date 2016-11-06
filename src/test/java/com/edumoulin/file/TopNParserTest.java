@@ -1,4 +1,4 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,6 +14,9 @@ import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.edumoulin.file.TopNFileWriter;
+import com.edumoulin.file.TopNParser;
 
 /**
  * Unit test for parsing.

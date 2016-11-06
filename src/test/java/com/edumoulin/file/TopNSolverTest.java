@@ -1,4 +1,4 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,6 +7,11 @@ import java.text.NumberFormat;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.edumoulin.file.TopNDichotomicSearch;
+import com.edumoulin.file.TopNFileWriter;
+import com.edumoulin.file.TopNLPEquation;
+import com.edumoulin.file.TopNSolver;
 
 /**
  * Unit test for solving the topN equation

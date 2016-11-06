@@ -1,4 +1,4 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 /**
  * Solve mathematically the topN problem.

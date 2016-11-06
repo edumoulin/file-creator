@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.edumoulin</groupId>
-	<artifactId>topn</artifactId>
+	<artifactId>file-creator</artifactId>
 	<version>0.1</version>
 	<name>Create a large files with numbers</name>
 	<dependencies>
@@ -47,7 +47,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>com.edumoulin.topn.TopNParser</mainClass>
+							<mainClass>com.edumoulin.file.TopNParser</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

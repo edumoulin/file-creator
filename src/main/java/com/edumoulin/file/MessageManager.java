@@ -1,4 +1,4 @@
-package com.edumoulin.topn;
+package com.edumoulin.file;
 
 import java.text.MessageFormat;
 import java.util.Properties;
